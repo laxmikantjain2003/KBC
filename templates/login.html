@@ -1,0 +1,94 @@
+ <!-- templates/login.html -->
+
+<!-- templates/login.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- Responsive design -->
+    <title>Login - KBC Game</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-container {
+            background: #fff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            max-width: 400px;
+            width: 100%;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #ffcc00;
+            border: none;
+            font-size: 1.1rem;
+            cursor: pointer;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+        button:hover {
+            background-color: #ffdb4d;
+        }
+        .message {
+            color: red;
+            text-align: center;
+        }
+        .register-link {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .register-link a {
+            text-decoration: none;
+            color: #0066cc;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>🔐 Login to Play</h2>
+
+        {% if message %}
+            <p class="message">{{ message }}</p>
+        {% endif %}
+
+        <form method="POST">
+            <label for="email">Email:</label>
+            <input type="email" name="email" required id="email" />
+
+            <label for="password">Password:</label>
+            <input type="password" name="password" required id="password" />
+
+            <button type="submit">Login</button>
+        </form>
+
+        <p class="register-link">Don't have an account? <a href="/register">Register here</a></p>
+    </div>
+</body>
+</html>
+

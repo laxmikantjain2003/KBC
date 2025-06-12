@@ -1,0 +1,128 @@
+<!-- templates/play.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- Responsive design -->
+    <title>KBC Game - Play</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #fff;
+            text-align: center;
+            padding: 30px;
+        }
+        .question-box {
+            border: 2px solid #00bfff;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: #1e1e1e;
+        }
+        .options button {
+            margin: 10px;
+            padding: 10px 20px;
+            background-color: #333;
+            border: 1px solid #555;
+            border-radius: 8px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .options button:hover {
+            background-color: #00bfff;
+        }
+        .lifelines {
+            margin-top: 20px;
+        }
+        .lifelines form {
+            display: inline;
+        }
+        .lifelines button {
+            margin: 5px;
+            padding: 8px 16px;
+            border-radius: 5px;
+            background-color: #444;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .lifelines button:hover {
+            background-color: #00bfff;
+        }
+        .timer {
+            font-size: 20px;
+            margin-top: 20px;
+            color: #ffcc00;
+        }
+        @media (max-width: 600px) {
+            .options button {
+                width: 90%;
+                font-size: 14px;
+            }
+            .lifelines button {
+                width: 90%;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🎮 KBC Game</h1>
+
+    <div class="question-box">
+        <h2>Q{{ question.id }}: {{ question.question }}</h2>
+        
+        {% if result %}
+            <p><strong>{{ result }}</strong></p>
+        {% endif %}
+
+        <div class="options">
+            <form id="questionForm" method="POST">
+                {% for key, value in options.items() %}
+                    <button name="answer" value="{{ key }}">{{ key }}. {{ value }}</button>
+                {% endfor %}
+            </form>
+        </div>
+
+        {% if phone_hint %}
+            <p>📞 {{ phone_hint }}</p>
+        {% endif %}
+        {% if audience_poll %}
+            <p>👥 {{ audience_poll }}</p>
+        {% endif %}
+    </div>
+
+    <div class="lifelines">
+        <h3>🛠 Lifelines:</h3>
+        <form method="POST">
+            {% if not used_phone %}
+                <button name="lifeline" value="phone">📞 Phone a Friend</button>
+            {% endif %}
+            {% if not used_audience %}
+                <button name="lifeline" value="audience">👥 Audience Poll</button>
+            {% endif %}
+            {% if not used_5050 %}
+                <button name="lifeline" value="5050">❌ 50-50</button>
+            {% endif %}
+            {% if not used_skip %}
+                <button name="lifeline" value="skip">⏩ Skip</button>
+            {% endif %}
+        </form>
+    </div>
+
+    <div class="timer">
+        ⏳ Time Left: <span id="countdown">30</span> seconds
+    </div>
+
+    <!-- ✅ Load JS file before closing body -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>

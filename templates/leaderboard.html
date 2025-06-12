@@ -1,0 +1,113 @@
+<!-- top 10 player -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- Responsive design -->
+    <title>KBC - Leaderboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 40px;
+        }
+
+        h1 {
+            color: #ffd700;
+            font-size: 3em;
+            margin-bottom: 30px;
+        }
+
+        table {
+            width: 80%;
+            margin: auto;
+            border-collapse: collapse;
+            background-color: #1e1e1e;
+            border: 2px solid #00bfff;
+            border-radius: 8px;
+            overflow: hidden; /* Ensures rounded corners are visible */
+        }
+
+        th, td {
+            padding: 15px;
+            border-bottom: 1px solid #00bfff;
+            font-size: 1.1em;
+        }
+
+        th {
+            background-color: #00bfff;
+            color: #000;
+        }
+
+        tr:hover {
+            background-color: #333;
+        }
+
+        .btn {
+            margin-top: 30px;
+            padding: 10px 20px;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            background-color: #00bfff;
+            color: white;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #007acc;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.5em;
+            }
+            table {
+                width: 100%;
+            }
+            th, td {
+                font-size: 1em;
+                padding: 10px;
+            }
+            .btn {
+                width: 90%;
+                padding: 12px;
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🏁 KBC Leaderboard</h1>
+
+    {% if scores %}
+        <table>
+            <tr>
+                <th>Rank</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Score</th>
+            </tr>
+            {% for i, row in enumerate(scores) %}
+            <tr>
+                <td>{{ i + 1 }}</td>
+                <td>{{ row['first_name'] }} {{ row['last_name'] }}</td>
+                <td>{{ row['email'] }}</td>
+                <td>{{ row['score'] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No scores available yet. Be the first to play!</p>
+    {% endif %}
+
+    <a href="/play"><button class="btn">🎮 Play Again</button></a>
+    <a href="/logout"><button class="btn">🚪 Logout</button></a>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+import sqlite3
+
+def create_database():
+    # Connect or create the database
+    conn = sqlite3.connect('kbc.db')
+    cursor = conn.cursor()
+
+    # Create users table
+    cursor.execute('''
+    CREATE TABLE IF NOT EXISTS users (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        first_name TEXT NOT NULL,
+        middle_name TEXT,
+        last_name TEXT NOT NULL,
+        age INTEGER NOT NULL CHECK(age > 0),  -- Ensure age is positive
+        email TEXT UNIQUE NOT NULL,
+        mobile TEXT NOT NULL,
+        password TEXT NOT NULL
+    ) 
+    ''')
+
+    # Create scores table
+    cursor.execute('''
+    CREATE TABLE IF NOT EXISTS scores (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        user_id INTEGER,
+        score INTEGER NOT NULL CHECK(score >= 0),  -- Ensure score is non-negative
+        FOREIGN KEY(user_id) REFERENCES users(id) ON DELETE CASCADE  -- Cascade delete
+    )
+    ''')
+
+    # Commit changes and close the connection
+    conn.commit()
+    conn.close()
+
+    print("✅ Database created successfully as kbc.db")
+
+if __name__ == "__main__":
+    create_database()

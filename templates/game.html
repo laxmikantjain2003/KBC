@@ -1,0 +1,92 @@
+<!-- game questions -->
+<!-- Features included in game.html:
+Welcome player name
+Start game button
+Smooth UI (CSS linked)
+Bootstrap-styled clean layout (optional)
+Redirect to /play on Start Game -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- Responsive design -->
+    <title>Welcome to KBC Game</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            color: #ffd700;
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        .welcome-box {
+            margin-top: 40px;
+            padding: 30px;
+            border: 2px solid #00bfff;
+            border-radius: 15px;
+            background-color: #1a1a1a;
+            display: inline-block;
+            box-shadow: 0 0 15px rgba(0, 191, 255, 0.5);
+        }
+
+        .welcome-box h2 {
+            color: #00bfff;
+            margin-bottom: 15px;
+        }
+
+        .welcome-box p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        .welcome-box button {
+            padding: 10px 30px;
+            font-size: 1.2em;
+            background-color: #00bfff;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .welcome-box button:hover {
+            background-color: #0080ff;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.5em;
+            }
+            .welcome-box button {
+                width: 100%;
+                padding: 12px;
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🎉 Welcome to Kaun Banega Crorepati 🎉</h1>
+
+    <div class="welcome-box">
+        <h2>Hello, {{ username }}!</h2>
+        <p>Are you ready to win ₹1 Crore?</p>
+        
+        <form action="/play" method="get">
+            <button type="submit">Start Game</button>
+        </form>
+    </div>
+
+</body>
+</html>

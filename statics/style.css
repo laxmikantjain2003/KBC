@@ -1,0 +1,256 @@
+/* styling */
+/* CSS variables for theme colors and spacing */
+:root {
+    --color-bg-container: rgba(0, 0, 50, 0.85);
+    --color-primary: #1a75ff;
+    --color-primary-hover: #0052cc;
+    --color-text: #fff;
+    --color-accent: #ffd700;
+    --color-correct: #28a745;
+    --color-wrong: #dc3545;
+    --color-lifeline: #ffa500;
+    --color-lifeline-used: #999999;
+    --color-timer: #ffcc00;
+    --color-link: #00ffff;
+    --color-link-hover: #ffffff;
+    --color-table-bg: #222222;
+    --color-table-border: #555555;
+    --font-family: 'Segoe UI', sans-serif;
+    --spacing-xs: 5px;
+    --spacing-sm: 10px;
+    --spacing-md: 20px;
+    --spacing-lg: 30px;
+    --spacing-xl: 50px;
+}
+
+/* Global styles */
+body {
+    font-family: var(--font-family);
+    background: url('/static/background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: var(--color-text);
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+    width: 90%;
+    max-width: 800px;
+    margin: var(--spacing-xl) auto;
+    background: var(--color-bg-container);
+    padding: var(--spacing-lg);
+    border-radius: 20px;
+    box-shadow: 0 0 15px var(--color-primary);
+    animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Headings */
+h1, h2, h3 {
+    color: var(--color-accent);
+    text-align: center;
+    margin-bottom: var(--spacing-md);
+    font-weight: 700;
+}
+
+/* Buttons and interactive elements */
+button, .btn {
+    padding: 12px 24px;
+    background-color: var(--color-primary);
+    border: none;
+    color: var(--color-text);
+    font-size: 16px;
+    margin: var(--spacing-xs);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    min-width: 44px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+}
+
+button:hover, .btn:hover {
+    background-color: var(--color-primary-hover);
+    box-shadow: 0 0 8px var(--color-primary-hover);
+}
+
+button:focus, .btn:focus,
+input:focus, select:focus {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+/* Disabled/used lifeline buttons */
+.lifelines button.used {
+    background-color: var(--color-lifeline-used);
+    cursor: not-allowed;
+    opacity: 0.7;
+    pointer-events: none;
+    box-shadow: none;
+}
+
+/* Inputs and selects */
+input, select {
+    padding: var(--spacing-sm);
+    margin: var(--spacing-xs) 0;
+    width: 100%;
+    border: 1.5px solid transparent;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: rgba(255 255 255 / 0.1);
+    color: var(--color-text);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:hover, select:hover {
+    border-color: var(--color-primary);
+}
+
+input:focus, select:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 8px var(--color-primary);
+}
+
+/* Form margin */
+form {
+    margin-top: var(--spacing-md);
+}
+
+/* Option buttons */
+.option-btn {
+    display: block;
+    width: 100%;
+    margin-bottom: var(--spacing-md);
+    font-weight: bold;
+    border: 2px solid var(--color-text);
+    background: transparent;
+    color: var(--color-text);
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    min-height: 44px;
+    cursor: pointer;
+}
+
+.option-btn:hover:not(.correct):not(.wrong) {
+    background-color: var(--color-primary);
+    color: var(--color-text);
+    border-color: var(--color-primary);
+}
+
+/* Correct and wrong answer feedback with smooth transition */
+.correct {
+    background-color: var(--color-correct) !important;
+    color: var(--color-text);
+    border-color: var(--color-correct) !important;
+    transition: background-color 0.6s ease;
+}
+
+.wrong {
+    background-color: var(--color-wrong) !important;
+    color: var(--color-text);
+    border-color: var(--color-wrong) !important;
+    transition: background-color 0.6s ease;
+}
+
+/* Lifelines container and buttons */
+.lifelines {
+    text-align: center;
+    margin-top: var(--spacing-lg);
+}
+
+.lifelines button {
+    background-color: var(--color-lifeline);
+    margin: 0 var(--spacing-xs);
+    min-width: 44px;
+    min-height: 44px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.lifelines button:hover:not(.used) {
+    background-color: #cc8400;
+}
+
+/* Timer styles */
+#timer {
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--color-timer);
+    margin-top: var(--spacing-sm);
+    text-align: center;
+    user-select: none;
+}
+
+/* Scorecard and leaderboard */
+.scorecard, .leaderboard {
+    text-align: center;
+    padding: var(--spacing-lg);
+    background-color: rgba(0, 0, 80, 0.85);
+    border-radius: 12px;
+}
+
+/* Logo styling */
+.logo {
+    display: block;
+    margin: 0 auto var(--spacing-md) auto;
+    max-width: 120px;
+}
+
+/* Link styles */
+a {
+    color: var(--color-link);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+a:hover,
+a:focus {
+    color: var(--color-link-hover);
+    text-decoration: underline;
+    outline: none;
+}
+
+/* Table styling */
+.table {
+    width: 100%;
+    margin-top: var(--spacing-md);
+    border-collapse: collapse;
+    background-color: var(--color-table-bg);
+    color: var(--color-text);
+    user-select: none;
+}
+
+.table th, .table td {
+    padding: 10px;
+    border: 1px solid var(--color-table-border);
+    text-align: center;
+}
+
+/* Responsive adjustments for mobile devices */
+@media (max-width: 640px) {
+    .container {
+        width: 95%;
+        padding: var(--spacing-md);
+        margin: var(--spacing-md) auto;
+    }
+    button, .btn, .option-btn, .lifelines button {
+        width: 100%;
+        min-width: unset;
+        min-height: 48px;
+        margin: var(--spacing-xs) 0;
+        font-size: 18px;
+    }
+    .option-btn {
+        font-size: 18px;
+    }
+}
+
+

@@ -1,0 +1,96 @@
+<!-- User registration -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsive design -->
+    <title>Register - KBC</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .form-container {
+            background: #fff;
+            padding: 25px;
+            border-radius: 12px;
+            max-width: 500px;
+            margin: auto;
+            margin-top: 40px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.3);
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        input[type="text"], input[type="email"], input[type="password"], input[type="number"], input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+        .btn-submit {
+            width: 100%;
+            padding: 12px;
+            background-color: #ffcc00;
+            border: none;
+            font-size: 1.1rem;
+            cursor: pointer;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+        .btn-submit:hover {
+            background-color: #ffdb4d;
+        }
+        .message {
+            color: red;
+            text-align: center;
+        }
+        .login-link {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .login-link a {
+            text-decoration: none;
+            color: #0066cc;
+        }
+    </style>
+    <script>
+        function calculateAge() {
+            const dobInput = document.getElementById('dob');
+            const ageInput = document.getElementById('age');
+            const dob = new Date(dobInput.value);
+            const today = new Date();
+            let age = today.getFullYear() - dob.getFullYear();
+            const monthDifference = today.getMonth() - dob.getMonth();
+            if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < dob.getDate())) {
+                age--;
+            }
+            ageInput.value = age;
+        }
+    </script>
+</head>
+<body>
+
+    <div class="form-container">
+        <h2>Register for KBC</h2>
+        {% if message %}
+            <p class="message">{{ message }}</p>
+        {% endif %}
+        <form method="POST" aria-label="User  Registration Form">
+            <input type="text" name="first_name" placeholder="First Name" required aria-required="true">
+            <input type="text" name="middle_name" placeholder="Middle Name (optional)" aria-required="false">
+            <input type="text" name="last_name" placeholder="Last Name" required aria-required="true">
+            <input type="date" id="dob" name="dob" placeholder="Date of Birth" required aria-required="true" onchange="calculateAge()"> <!-- Date of Birth input -->
+            <input type="number" id="age" name="age" placeholder="Age" required min="10" aria-required="true" readonly> <!-- Age input -->
+            <input type="email" name="email" placeholder="Email" required aria-required="true">
+            <input type="text" name="mobile" placeholder="Mobile Number" required aria-required="true">
+            <input type="password" name="password" placeholder="Password" required aria-required="true">
+            <button type="submit" class="btn-submit">Register</button>
+        </form>
+        <div class="login-link">
+            Already registered? <a href="/login">Login here</a>
+        </div>
+    </div>
+
+</body>
+</html>

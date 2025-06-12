@@ -1,0 +1,167 @@
+[
+  {
+    "id": 1,
+    "question": "Who is the founder of Microsoft?",
+    "options": {
+      "A": "Steve Jobs",
+      "B": "Bill Gates",
+      "C": "Mark Zuckerberg",
+      "D": "Larry Page"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 2,
+    "question": "What is the capital of Australia?",
+    "options": {
+      "A": "Sydney",
+      "B": "Melbourne",
+      "C": "Canberra",
+      "D": "Perth"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 3,
+    "question": "Which gas do plants absorb from the atmosphere?",
+    "options": {
+      "A": "Oxygen",
+      "B": "Nitrogen",
+      "C": "Carbon Dioxide",
+      "D": "Hydrogen"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 4,
+    "question": "Who wrote 'Romeo and Juliet'?",
+    "options": {
+      "A": "Charles Dickens",
+      "B": "William Shakespeare",
+      "C": "Leo Tolstoy",
+      "D": "Jane Austen"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 5,
+    "question": "Which is the smallest continent by land area?",
+    "options": {
+      "A": "Europe",
+      "B": "Australia",
+      "C": "Antarctica",
+      "D": "South America"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 6,
+    "question": "What is H2O commonly known as?",
+    "options": {
+      "A": "Hydrogen",
+      "B": "Oxygen",
+      "C": "Water",
+      "D": "Helium"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 7,
+    "question": "How many players are there in a football (soccer) team?",
+    "options": {
+      "A": "9",
+      "B": "10",
+      "C": "11",
+      "D": "12"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 8,
+    "question": "What is the chemical symbol for gold?",
+    "options": {
+      "A": "Au",
+      "B": "Ag",
+      "C": "Gd",
+      "D": "Go"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 9,
+    "question": "Which planet is known as the Red Planet?",
+    "options": {
+      "A": "Earth",
+      "B": "Jupiter",
+      "C": "Mars",
+      "D": "Venus"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 10,
+    "question": "What is the hardest natural substance on Earth?",
+    "options": {
+      "A": "Iron",
+      "B": "Gold",
+      "C": "Diamond",
+      "D": "Quartz"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 11,
+    "question": "Who painted the Mona Lisa?",
+    "options": {
+      "A": "Pablo Picasso",
+      "B": "Leonardo da Vinci",
+      "C": "Vincent van Gogh",
+      "D": "Michelangelo"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 12,
+    "question": "Which is the longest river in the world?",
+    "options": {
+      "A": "Nile",
+      "B": "Amazon",
+      "C": "Yangtze",
+      "D": "Mississippi"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 13,
+    "question": "Which instrument has keys, pedals and strings?",
+    "options": {
+      "A": "Guitar",
+      "B": "Flute",
+      "C": "Drum",
+      "D": "Piano"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 14,
+    "question": "What is the capital of Japan?",
+    "options": {
+      "A": "Kyoto",
+      "B": "Osaka",
+      "C": "Tokyo",
+      "D": "Hiroshima"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 15,
+    "question": "Which organ purifies our blood?",
+    "options": {
+      "A": "Heart",
+      "B": "Kidney",
+      "C": "Lungs",
+      "D": "Liver"
+    },
+    "answer": "B"
+  }
+]
